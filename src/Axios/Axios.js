@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import axios from 'axios';
 
 
@@ -6,20 +6,19 @@ import axios from 'axios';
 class Axios extends Component {
     constructor(props){
         super(props);
-        this.state = {}
+        this.state = {data:[]}
     }
     showData = ()=>{
-        const url = "https://jsonplaceholder.typicode.com/posts/1";
+        const url = "https://jsonplaceholder.typicode.com/posts";
        axios.get(url).then((response)=>{
-           const {id,userId,title,body} = response.data;
-           this.setState({userId,id,body,title})
+           this.setState({data:response.data})
        
        }).catch((error)=>{
             alert("error",error);
        });
     }
     render() {
-      
+        const data = this.state.data;
         return (
             <>
                <button className="btn btn-success" onClick={this.showData}>Show Data</button>  
@@ -33,7 +32,7 @@ class Axios extends Component {
                       </tr>
                   </thead>
                   <tbody>
-                  {/* {
+                  {
                     data.map((dataShow,index)=>{
                         const {id,userId,body,title} = dataShow;
                         return <tr key={index}>
@@ -43,13 +42,8 @@ class Axios extends Component {
                           <td>{body}</td>
                       </tr>;
                     })
-               } */}
-               <tr>
-                          <td> {this.state.userId} </td>
-                          <td>{this.state.id}</td>
-                          <td>{this.state.title}</td>
-                          <td>{this.state.body}</td>
-                      </tr>
+               }
+                      
                   </tbody>
               </table>
               
