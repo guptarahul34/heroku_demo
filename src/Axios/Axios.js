@@ -22,6 +22,8 @@ class Axios extends Component {
         return (
             <>
                <button className="btn btn-success" onClick={this.showData}>Show Data</button>  
+               <br/><br/>
+               
               <table className="table">
                   <thead>
                       <tr>
@@ -42,7 +44,7 @@ class Axios extends Component {
                           <td>{body}</td>
                       </tr>;
                     })
-               }
+                  }
                       
                   </tbody>
               </table>
